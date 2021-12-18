@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "nth-fibonacci": {
+      "hosting": {
+        "nth-fibonacci": [
+          "nth-fibonacci"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "nth-fibonacci"
+  }
+}

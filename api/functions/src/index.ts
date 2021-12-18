@@ -10,9 +10,15 @@ const app = express();
 const db = admin.firestore();
 const firestoreHelper = firebaseHelper.firestoreHelper;
 
-app.use(cors({origin: true}));
+const allowedOrigins = ["http://localhost:4200", "https://nth-fibonacci.web.app"];
 
-app.get("/fibonacci/:nthNum", async (req, res) => {
+const options: cors.CorsOptions = {
+  origin: allowedOrigins,
+};
+
+app.use(cors(options));
+
+app.post("/fibonacci/:nthNum", async (req, res) => {
   /**
    * Retrieve the nth fibonacci number
    * @param {number} n the nth fib number
@@ -42,20 +48,20 @@ app.get("/fibonacci/:nthNum", async (req, res) => {
 
         functions.logger.info(`Logged: ${newFibDoc.id}`);
 
-        res.json(fibNumber);
+        res.json({"data": fibNumber});
       } catch (error) {
         functions.logger.error(`Error: ${error}`);
         res.sendStatus(400);
       }
     } else {
-      res.sendStatus(403); // $++
+      res.sendStatus(403);
     }
   } else {
     res.sendStatus(400);
   }
 });
 
-app.get("/fibs", async (req, res) => {
+app.post("/fibs", async (req, res) => {
   const pw = req.query.pw;
   if (pw == "vr") {
     const allFibs: FirebaseFirestore.DocumentData = [];

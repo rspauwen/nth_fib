@@ -1,0 +1,17 @@
+<section fxLayout="column" fxFlexAlign="stretch">
+  <div fxFlexAlign="center">
+    <p>Obtain the n-th number in the <a href="https://en.wikipedia.org/wiki/Fibonacci_sequence" target="_blank">Fibonacci</a> sequence</p>
+  </div>
+  <form [formGroup]="this.fibsService.form">
+    <input
+      placeholder="Positive number"
+      formControlName="nthNumber"
+      type="number"
+      class="input-field col s12"
+    />
+  
+    <button class="waves-effect waves-light btn col s12 blue lighten-1" (click)="onSubmit()" (keyup.enter)="onSubmit()">
+      Submit
+    </button>
+  </form>
+</section>
