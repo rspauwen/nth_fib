@@ -19,6 +19,7 @@ export class FibsService {
 
   doFibRequest(nthNumber: number): any {
     return new Promise((resolve, reject) => {
+      // provided password param is actually a bit redundant due to API key restrictions
       const callable = this.functions.httpsCallable(`app/fibonacci/${nthNumber}?pw=vr`);
       const obs = callable({});
 
@@ -31,6 +32,7 @@ export class FibsService {
   }
 
   getFibRequests() {
+    // Perhaps a bit odd to do this request directly to the DB while API function is available...
     return this.db.collection("fibs", ref => ref.orderBy('timestamp', "desc")).snapshotChanges();
   }
 }

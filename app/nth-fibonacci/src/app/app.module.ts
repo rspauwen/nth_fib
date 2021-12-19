@@ -18,8 +18,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { environment } from "src/environments/environment";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FibListComponent } from './fib-list/fib-list.component';
-import { FibsComponent } from './fibs/fibs.component';
+import { FibHistoryComponent } from './fib-history/fib-history.component';
+import { FibRequestComponent } from './fib-request/fib-request.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './navigation/header/header.component';
 import { FibsService } from './shared/fibs.service';
@@ -27,16 +27,16 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'history', component: FibListComponent },
-  { path: 'request', component: FibsComponent },
+  { path: 'history', component: FibHistoryComponent },
+  { path: 'request', component: FibRequestComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    FibsComponent,
-    FibListComponent,
+    FibHistoryComponent,
+    FibRequestComponent,
     HeaderComponent,
     SidenavListComponent
   ],
